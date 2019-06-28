@@ -47,7 +47,7 @@ public class Acesso {
                     System.out.println("Digite seu ID:");
                     int id = negativeNum(input.nextInt());
                     if(list.get(id) == null) {
-                        System.out.println("Nao ha empregados registrados ainda!\n");
+                        System.out.println("Empregado nao registrados ainda!\n");
                         return;
                     }else {
                         user.user(list.get(id), time, new Manager(), agendas,originator,
