@@ -1,3 +1,5 @@
+package façade;
+
 import empresa.agendas.*;
 import empresa.funcionarios.*;
 import empresa.funcionarios.comissoes.Comissioned;
@@ -10,7 +12,7 @@ public class Manager
 {
     static Scanner input = new Scanner(System.in);
 
-    static void addEmployee(ArrayList<Employee> list, ArrayList<Union> union, int total) {
+    public void addEmployee(ArrayList<Employee> list, ArrayList<Union> union, int total) {
         String name, adress;
         Employee x;
         System.out.print("Digite o nome:\n");
@@ -74,7 +76,7 @@ public class Manager
         input.nextLine();
     }
 
-    static void removeEmployee(ArrayList<Employee> list, ArrayList<Union> union, int id, int total) {
+    public void removeEmployee(ArrayList<Employee> list, ArrayList<Union> union, int id, int total) {
 
         if(union.get(id).isUnion()) {
             union.get(id).setUnion(false); // unionID
@@ -84,7 +86,7 @@ public class Manager
         System.out.println("Empregado removido com sucesso..");
     }
 
-    static void updateEmployee(ArrayList<Employee> list, ArrayList<Union> union, int id, int total){
+    public void updateEmployee(ArrayList<Employee> list, ArrayList<Union> union, int id, int total){
         while(true) {
             System.out.println("Digite o numero da informacao a qual deseja atualizar:\n\n" +
                     "0. Retornar\n" +

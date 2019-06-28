@@ -187,5 +187,27 @@ public class WeeklySchedule implements empresa.agendas.Schedule {
         return "Agenda:\n" + "Semanal " + this.frequence + " " + dW;
     }
 
+    public void roolSheet(ArrayList<Employee> list, int day, int week){
+        for (Employee e : list) {
+
+            String Pm;
+            if (e.schedule.getPaymentMethod() == 1)
+                Pm = "Cheque em mãos";
+            else if (e.schedule.getPaymentMethod() == 2)
+                Pm = "Cheque pelos correios";
+            else
+                Pm = "Depósito bancário";
+
+            if(e.schedule instanceof WeeklySchedule){
+                if(((WeeklySchedule) e.schedule).getFrequence()%week == 0){
+                    if (day == ((WeeklySchedule) e.schedule).getDayWeek()){
+                        System.out.println("Employee de ID [" + e.getId() +"]\n" +
+                                "Foi pago através de: " + Pm);
+                        System.out.println("--------------------------------");
+                    }
+                }
+            }
+        }
+    }
 }
 

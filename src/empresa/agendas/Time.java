@@ -6,11 +6,11 @@ public class Time {
     private static int DAY = 1;
     private static int WEEK = 0;
 
-    public static int getHOUR() {
+    public int getHOUR() {
         return HOUR;
     }
 
-    public static void setHOUR(int HOUR) {
+    public void setHOUR(int HOUR) {
         Time.HOUR += HOUR;
         Time.HOUR %= 24;
         if(Time.HOUR == 0) DAY++;
@@ -20,7 +20,7 @@ public class Time {
         System.out.println("Hora(s) passada(s) com sucesso.");
     }
 
-    public static void setDAY(int DAY) {
+    public void setDAY(int DAY) {
         Time.DAY += DAY;
         DAY %= 365;
         WEEK = DAY/7;
@@ -28,15 +28,15 @@ public class Time {
         System.out.println("Dia(s) passado(s) com sucesso.");
     }
 
-    public static int getDAY() {
+    public int getDAY() {
         return DAY;
     }
 
-    public static int getWEEK() {
+    public int getWEEK() {
         return WEEK;
     }
 
-    public static void setWEEK(int WEEK) {
+    public void setWEEK(int WEEK) {
         Time.WEEK += WEEK;
 
         System.out.println("Semana(s) passadas com sucesso.");

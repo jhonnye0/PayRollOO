@@ -92,4 +92,26 @@ public class MonthlySchedule implements Schedule
     public MonthlySchedule makeCopy(){
         return new MonthlySchedule(this.paymentMethod, this.payday);
     }
+
+    public void roolSheet(ArrayList<Employee> list, int day, int week) {
+
+        for (Employee e : list) {
+
+            String Pm;
+            if (e.schedule.getPaymentMethod() == 1)
+                Pm = "Cheque em mãos";
+            else if (e.schedule.getPaymentMethod() == 2)
+                Pm = "Cheque pelos correios";
+            else
+                Pm = "Depósito bancário";
+
+            if (e.schedule instanceof MonthlySchedule) {
+                if (day == ((empresa.agendas.MonthlySchedule) e.schedule).getPayday()) {
+                    System.out.println("Employee de ID [" + e.getId() + "]\n" +
+                            "Foi pago através de: " + Pm);
+                    System.out.println("--------------------------------");
+                }
+            }
+        }
+    }
 }
