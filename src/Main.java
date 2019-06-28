@@ -1,10 +1,5 @@
-import empresa.funcionarios.*;
-import empresa.agendas.*;
-import empresa.sindicato.*;
-import empresa.funcionarios.comissoes.*;
-import empresa.funcionarios.horista.*;
+import empresa.agendas.Time;
 import façade.Acesso;
-import undoRedo.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -18,6 +13,8 @@ public class Main {
         Time time = new Time();
         acess.acess(time);
 
-        System.out.println("Obrigado por utilizar nossos servicos!!");
+        System.out.println("_---------------------------------------_\n" +
+                " Obrigado por utilizar nossos servicos!! \n" +
+                "_---------------------------------------_");
     }
 }
