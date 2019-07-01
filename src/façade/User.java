@@ -16,7 +16,7 @@ public class User {
 
     public void user(Employee usario, Time time, Manager manager,
                      ArrayList<Schedule> agendas, Originator originator,
-                     Originator reOriginator, CareTaker unCareTaker, ReCareTaker reCareTaker){
+                     Originator reOriginator, CareTaker unCareTaker, ReCareTaker reCareTaker, Empresa empresa){
 
         while(true)
         {

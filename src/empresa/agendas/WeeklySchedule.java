@@ -47,7 +47,7 @@ public class WeeklySchedule implements empresa.agendas.Schedule {
 
     public void createNewSchedule(ArrayList<empresa.agendas.Schedule> agendas){
 
-        System.out.println("Qual a frequência pagamento?(acima de 3 semanas é inviável)");
+        System.out.println("Qual a frequencia pagamento?(acima de 3 semanas é inviavel)");
         int frequence;
         while(true)
         {
@@ -63,14 +63,14 @@ public class WeeklySchedule implements empresa.agendas.Schedule {
                 input.nextLine();
             }
         }
-        System.out.print("Qual dia da semana será efetuado o pagamento?\n\n" +
+        System.out.print("Qual dia da semana sera efetuado o pagamento?\n\n" +
                 "1. Domingo\n" +
                 "2. Segunda\n" +
-                "3. Terça\n" +
+                "3. Terca\n" +
                 "4. Quarta\n" +
                 "5. Quinta\n" +
                 "6. Sexta\n" +
-                "7. Sábado\n");
+                "7. Sabado\n");
         int dayweek;
         while(true)
         {
@@ -138,7 +138,7 @@ public class WeeklySchedule implements empresa.agendas.Schedule {
                     if(a > agendas.size() || a < 0)
                         System.out.print("Intervalo incorreto digite novamente..\n");
                     else if(num == 2){
-                        x.schedule = new WeeklySchedule(x.getpayMSchedule(), ((WeeklySchedule)agendas.get(a)).getFrequence(), ((WeeklySchedule)agendas.get(a)).getDayWeek());
+                        x.setSchedule(new WeeklySchedule(x.getpayMSchedule(), ((WeeklySchedule)agendas.get(a)).getFrequence(), ((WeeklySchedule)agendas.get(a)).getDayWeek()));
                         break;
                     }else{
                         System.out.print("Agenda do tipo incorreta digite novamente..\n");
@@ -191,18 +191,18 @@ public class WeeklySchedule implements empresa.agendas.Schedule {
         for (Employee e : list) {
 
             String Pm;
-            if (e.schedule.getPaymentMethod() == 1)
-                Pm = "Cheque em mãos";
-            else if (e.schedule.getPaymentMethod() == 2)
+            if (e.getpayMSchedule() == 1)
+                Pm = "Cheque em maos";
+            else if (e.getpayMSchedule() == 2)
                 Pm = "Cheque pelos correios";
             else
-                Pm = "Depósito bancário";
+                Pm = "Deposito bancario";
 
-            if(e.schedule instanceof WeeklySchedule){
-                if(((WeeklySchedule) e.schedule).getFrequence()%week == 0){
-                    if (day == ((WeeklySchedule) e.schedule).getDayWeek()){
+            if(e.getSchedule() instanceof WeeklySchedule){
+                if(((WeeklySchedule) e.getSchedule()).getFrequence()%week == 0){
+                    if (day == ((WeeklySchedule) e.getSchedule()).getDayWeek()){
                         System.out.println("Employee de ID [" + e.getId() +"]\n" +
-                                "Foi pago através de: " + Pm);
+                                "Foi pago atraves de: " + Pm);
                         System.out.println("--------------------------------");
                     }
                 }

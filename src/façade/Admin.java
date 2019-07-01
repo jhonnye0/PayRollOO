@@ -15,7 +15,7 @@ public class Admin {
     public int admin(ArrayList<Employee> list, ArrayList<Union> union,
                      ArrayList<Schedule> agendas, Manager manager, Time time,
                      int total, Originator originator, Originator reOriginator,
-                     CareTaker unCareTaker, ReCareTaker reCareTaker) {
+                     CareTaker unCareTaker, ReCareTaker reCareTaker, Empresa empresa) {
 
         while (true){
             System.out.println("\n----------------------------------\n");
@@ -47,6 +47,7 @@ public class Admin {
                     return total;
                 case 1:
                     manager.addEmployee(list, union, total);
+                    total += 1;
                     save = 1;
                     break;
                 case 2:
@@ -178,7 +179,10 @@ public class Admin {
                             reCareTaker.save(reOriginator);
                             unCareTaker.undo(originator);
                             list = originator.getEmp();
+                            empresa.setList(list);
+
                             union = originator.getUn();
+                            empresa.setUnion(union);
                             total = list.size();
                         }else{
                             System.out.println("Nao ha operacoes disponiveis para fazer");

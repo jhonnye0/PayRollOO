@@ -46,12 +46,19 @@ public class MonthlySchedule implements Schedule
 
     public int checkValid() {
         String valid;
+
         while (true) {
-            valid = input.nextLine();
-            if ((Integer.valueOf(valid) < 0 || Integer.valueOf(valid) > 31) && valid != "$") {
-                System.out.println("Intervalo inadequado, digite novamente..");
-            } else if (valid == "$") return 31;
-            else return Integer.valueOf(valid);
+            try{
+                valid = input.nextLine();
+
+                if(valid.equals("$")) return 31;
+                else if ((Integer.parseInt(valid) >= 0 && Integer.parseInt(valid) <= 31)) {
+                    return Integer.parseInt(valid);
+                }
+                else System.out.println("Intervalo inadequado, digite novamente..");
+            }catch (Exception e){
+                System.out.println("Tipo inadequado digite novamente!");
+            }
         }
     }
 
@@ -68,7 +75,7 @@ public class MonthlySchedule implements Schedule
         if (valid == 0) {
             System.out.println("Somente agendas default\n");
         }else {
-            System.out.println("\nDigite o número da agenda que deseja:");
+            System.out.println("\nDigite o numero da agenda que deseja:");
             int a;
             while (true) {
                 try {
@@ -76,7 +83,7 @@ public class MonthlySchedule implements Schedule
                     if (a > agendas.size() || a < 0)
                         System.out.print("Intervalo incorreto digite novamente..\n");
                     else if (num == 1) {
-                        x.schedule = new MonthlySchedule(x.getpayMSchedule(), ((MonthlySchedule) agendas.get(a)).getPayday());
+                        x.setSchedule(new MonthlySchedule(x.getpayMSchedule(), ((MonthlySchedule) agendas.get(a)).getPayday()));
                         break;
                     }else{
                         System.out.print("Agenda do tipo incorreta digite novamente..\n");
@@ -98,17 +105,17 @@ public class MonthlySchedule implements Schedule
         for (Employee e : list) {
 
             String Pm;
-            if (e.schedule.getPaymentMethod() == 1)
-                Pm = "Cheque em mãos";
-            else if (e.schedule.getPaymentMethod() == 2)
+            if (e.getpayMSchedule() == 1)
+                Pm = "Cheque em maos";
+            else if (e.getpayMSchedule() == 2)
                 Pm = "Cheque pelos correios";
             else
-                Pm = "Depósito bancário";
+                Pm = "Deposito bancario";
 
-            if (e.schedule instanceof MonthlySchedule) {
-                if (day == ((empresa.agendas.MonthlySchedule) e.schedule).getPayday()) {
+            if (e.getSchedule() instanceof MonthlySchedule) {
+                if (day == ((empresa.agendas.MonthlySchedule) e.getSchedule()).getPayday()) {
                     System.out.println("Employee de ID [" + e.getId() + "]\n" +
-                            "Foi pago através de: " + Pm);
+                            "Foi pago atraves de: " + Pm);
                     System.out.println("--------------------------------");
                 }
             }

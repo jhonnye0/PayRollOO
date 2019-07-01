@@ -14,13 +14,12 @@ public class Acesso {
     static Scanner input = new Scanner(System.in);
     private Admin adm = new Admin();
     private User user = new User();
+    private Time time = new Time();
 
-    public void acess(Time time) {
-        ArrayList<Employee> list = new ArrayList<>();
-        ArrayList<Union> union = new ArrayList<>();
-        ArrayList<Schedule> agendas = new ArrayList<>();
-        Originator originator = new Originator(list, union);
-        Originator reOriginator = new Originator(list, union);
+    public void acess() {
+        Empresa empresa = new Empresa();
+        Originator originator = new Originator(empresa.getList(), empresa.getUnion());
+        Originator reOriginator = new Originator(empresa.getList(), empresa.getUnion());
         CareTaker unCareTaker = new CareTaker();
         ReCareTaker reCareTaker = new ReCareTaker();
 
@@ -39,20 +38,23 @@ public class Acesso {
                 case 0:
                     return;
                 case 1:
-                    setTotal(adm.admin(list, union, agendas, new Manager(),
+                    setTotal(adm.admin(empresa.getList(), empresa.getUnion(), empresa.getAgendas(), new Manager(),
                             time, total, originator, reOriginator,
-                    unCareTaker, reCareTaker));
+                    unCareTaker, reCareTaker, empresa));
                     break;
                 case 2:
                     System.out.println("Digite seu ID:");
                     int id = negativeNum(input.nextInt());
-                    if(list.get(id) == null) {
-                        System.out.println("Empregado nao registrados ainda!\n");
-                        return;
-                    }else {
-                        user.user(list.get(id), time, new Manager(), agendas,originator,
-                                reOriginator, unCareTaker, reCareTaker);
+                    try {
+                        if(empresa.getList().get(id) == null){}
+                        else {
+                            user.user(empresa.getList().get(id), time, new Manager(), empresa.getAgendas(),originator,
+                                    reOriginator, unCareTaker, reCareTaker, empresa);
+                        }
+                    }catch (Exception e){
+                        System.out.println("Empregado nao registrado ainda!");
                     }
+
                     break;
             }
         }

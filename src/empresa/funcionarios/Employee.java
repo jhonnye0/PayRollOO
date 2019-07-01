@@ -9,7 +9,7 @@ public abstract class Employee
     private String name;
     private String adress;
     private double fundo;
-    public Schedule schedule;
+    private Schedule schedule;
 
     public Employee(int id, String name, String adress) {
         this.id = id;
@@ -75,5 +75,13 @@ public abstract class Employee
 
     public int getpayMSchedule() {
         return this.schedule.getPaymentMethod();
+    }
+
+    public void setSchedule(Schedule schedule){
+        this.schedule = schedule;
+    }
+
+    public Schedule getSchedule() {
+        return this.schedule;
     }
 }

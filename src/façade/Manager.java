@@ -91,7 +91,7 @@ public class Manager
             System.out.println("Digite o numero da informacao a qual deseja atualizar:\n\n" +
                     "0. Retornar\n" +
                     "1. Nome\n" +
-                    "2. Endereço\n" +
+                    "2. Endereco\n" +
                     "3. Tipo\n" +
                     "4. Metodo de pagamento\n" +
                     "5. Participacao no sindicato\n");
@@ -159,7 +159,7 @@ public class Manager
                         list.add(id, aux);
 
                     }
-                    aux.schedule = x.schedule;
+                    aux.setSchedule(x.getSchedule());
                     aux.setFundo(x.getFundo());
                     aux.setUnionID(x.getUnionID());
 
@@ -167,7 +167,7 @@ public class Manager
                     break;
                 case 4:
                     int method = paymMeth();
-                    Schedule aux1 = list.get(id).schedule;
+                    Schedule aux1 = list.get(id).getSchedule();
                     if(aux1 instanceof MonthlySchedule){
                         list.get(id).createSchedule(method, ((MonthlySchedule) aux1).getPayday());
                     }else {
@@ -213,9 +213,9 @@ public class Manager
     public static void printEmployee(ArrayList<Employee> list, ArrayList<Union> union, int id) {
         System.out.print("\n-----------------------------------\n");
         Employee x = list.get(id);
-        if(x.schedule != null) {
+        if(x.getSchedule() != null) {
             System.out.print(x.toString());
-            System.out.println(x.schedule.toString());
+            System.out.println(x.getSchedule().toString());
         }
         if (union.get(id).isUnion()) {
             System.out.println("Union: true");
@@ -230,7 +230,7 @@ public class Manager
             valid = 1;
             list.get(id);
         }catch (IndexOutOfBoundsException e){
-            System.out.println("Empregado não registrado na empresa.");
+            System.out.println("Empregado nao registrado na empresa.");
             valid = 0;
         }
         return valid == 1;
@@ -279,7 +279,7 @@ public class Manager
         while(type < 1 || type > 3)
         {
             if(valid == 0)
-                System.out.print("Número fora do intervalo, digite novamente..\n");
+                System.out.print("Numero fora do intervalo, digite novamente..\n");
             valid = 0;
             try{
                 type = input.nextInt();
@@ -293,18 +293,18 @@ public class Manager
     }
 
     private static double comCatch(double comPerc) {
-        System.out.print("Qual o percentual de comissão do empregado?\n");
+        System.out.print("Qual o percentual de comissao do empregado?\n");
         int valid = -1;
         while (comPerc < 0 || comPerc > 100)
         {
             if(valid == 0){
-                System.out.print("Número fora do intervalo, digite novamente..\n");
+                System.out.print("Numero fora do intervalo, digite novamente..\n");
             }
             valid = 0;
             try {
                 comPerc = input.nextDouble();
             }catch (Exception e) {
-                System.out.print("Percentual especificado imprópio, digite novamente..\n");
+                System.out.print("Percentual especificado impropio, digite novamente..\n");
                 input.nextLine();
             }
         }
@@ -314,14 +314,14 @@ public class Manager
     private static int paymMeth() {
         int method = 0;
         int valid = -1;
-        System.out.print("Qual método de pagamento que deseja?\n" +
-                "1.Cheque em mãos\n" +
+        System.out.print("Qual metodo de pagamento que deseja?\n" +
+                "1.Cheque em maos\n" +
                 "2.Cheque pelos correios\n" +
-                "3.Déposito bancário\n");
+                "3.Deposito bancario\n");
         while(method < 1 || method > 3)
         {
             if(valid == 0)
-                System.out.print("Número fora do intervalo, digite novamente..\n");
+                System.out.print("Numero fora do intervalo, digite novamente..\n");
             valid = 0;
             try {
                 method = input.nextInt();

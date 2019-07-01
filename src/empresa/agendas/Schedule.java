@@ -16,5 +16,4 @@ public interface Schedule
     void changeSchedule(ArrayList<Schedule> agendas, Employee x, int num);
 
     void roolSheet(ArrayList<Employee> list, int day, int week);
-
 }

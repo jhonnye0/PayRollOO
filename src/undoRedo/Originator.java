@@ -15,10 +15,10 @@ public class Originator {
     public Originator(ArrayList<Employee> list, ArrayList<Union> union) {
         for(Employee e : list){
             Employee aux = e.makeCopy();
-            if(e.schedule instanceof MonthlySchedule){
-                aux.schedule = ((MonthlySchedule)e.schedule).makeCopy();
+            if(e.getSchedule() instanceof MonthlySchedule){
+                aux.setSchedule(((MonthlySchedule)e.getSchedule()).makeCopy());
             }else{
-                aux.schedule = ((WeeklySchedule)e.schedule).makeCopy();
+                aux.setSchedule(((WeeklySchedule)e.getSchedule()).makeCopy());
             }
             emp.add(aux);
         }
@@ -31,10 +31,10 @@ public class Originator {
         this.emp = new ArrayList<>();
         for(Employee e : list){
             Employee aux = e.makeCopy();
-            if(e.schedule instanceof MonthlySchedule){
-                aux.schedule = ((MonthlySchedule)e.schedule).makeCopy();
-            }else if (e.schedule instanceof WeeklySchedule){
-                aux.schedule = ((WeeklySchedule)e.schedule).makeCopy();
+            if(e.getSchedule() instanceof MonthlySchedule){
+                aux.setSchedule(((MonthlySchedule)e.getSchedule()).makeCopy());
+            }else if (e.getSchedule() instanceof WeeklySchedule){
+                aux.setSchedule(((WeeklySchedule)e.getSchedule()).makeCopy());
             }
             emp.add(aux);
         }
@@ -70,10 +70,10 @@ public class Originator {
             this.emp = new ArrayList<>();
             for(Employee e : list){
                 Employee aux = e.makeCopy();
-                if(e.schedule instanceof MonthlySchedule){
-                    aux.schedule = ((MonthlySchedule)e.schedule).makeCopy();
+                if(e.getSchedule() instanceof MonthlySchedule){
+                    aux.setSchedule(((MonthlySchedule)e.getSchedule()).makeCopy());
                 }else{
-                    aux.schedule = ((WeeklySchedule)e.schedule).makeCopy();
+                    aux.setSchedule(((WeeklySchedule)e.getSchedule()).makeCopy());
                 }
                 emp.add(aux);
             }
